@@ -15,7 +15,7 @@ function App() {
 
   const [firstText, setFirstText] = useState('')
   const [secondText, setSecondText] = useState('')
-  const [timeout, setTimeout] = useState(1)
+  const [timeout, setTimeout] = useState(0)
   const [editcost, setEditCost] = useState(3)
   const [optionChecked, setOptionChecked] = useState(optionCheckedType.raw)
 
@@ -25,10 +25,9 @@ function App() {
     dmp.Diff_Timeout = timeout
     dmp.Diff_EditCost = editcost
 
-    const ms_start = (new Date()).getTime();
-    const ms_end = (new Date()).getTime();
-
+    const ms_start = (new Date()).getTime();    
     diff = dmp.diff_main(firstText, secondText);
+    const ms_end = (new Date()).getTime();
 
     if (optionChecked === optionCheckedType.semantic) {
       dmp.diff_cleanupSemantic(diff);
@@ -37,7 +36,7 @@ function App() {
       dmp.diff_cleanupEfficiency(diff);
     }
     diff.forEach(n => console.log(n))
-    console.log((ms_start - ms_end) / 1000 + 's')
+    console.log((ms_end - ms_start) / 1000 + 's')
     // document.getElementById('outputdiv').innerHTML = ds + '<BR>Time: ' + (ms_end - ms_start) / 1000 + 's';
   }, [firstText, secondText, timeout, editcost, optionChecked])
 
