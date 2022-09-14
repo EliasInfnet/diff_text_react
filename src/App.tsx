@@ -106,17 +106,6 @@ function App() {
           </RadioGroup>
         </FormControl>
       </div>
-      <div>
-        {diff.map((d: any) => (
-          <p style={{ display: 'inline-block', verticalAlign: 'top' }}>{d.added ? (
-            <span style={addedPart}>{d.value}</span>
-          ) : d.removed ? (
-            <span style={removedPart}>{d.value}</span>
-          ) : (
-            <span>{d.value}</span>
-          )}</p>
-        ))}
-      </div>
     </div>
   )
 }
